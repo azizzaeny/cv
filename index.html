@@ -15,7 +15,598 @@
     </script>
     
     <script type="text/javascript">
+      const {H, R} = window;
+      
+      const cssContent = `
+      .font-sspro{
+	font-family: 'Source Sans Pro', sans-serif;
+      }
+      .font-pfd{
+	font-family: 'Playfair Display', serif;
+      }
+      .w-210mm{
+       width:210mm;
+      }
+      .h-148mm{
+       height: 148mm;
+      }
+      .h-296mm{
+       height:296mm;
+      }
+      .p-10mm{
+       padding:10mm;
+      }
+      .my-10mm{
+       margin:10mm auto;
+      }
+      .shadow-lg-outer{
+       box-shadow: 0 0.5mm 6mm rgba(0,0,0,.2);
+      }
+      .break-after{
+       page-break-after: always;
+      }
+      .bg-black-gray{
+       background-color:#080909;
+      }
+      .text-col-f7f8{
+       color: #f7f8f8;
+      }
+      .bg-green-d1{
+       background-color:#d4d4c4;
+      }
+      .bg-green-d2{
+       background-color:#ececec;
+      }
+      .bg-f5{
+       background-color:#f5f5f5;
+      }
+      .bg-pink-soft{
+       background-color:#f7e9e0;
+      }
+      .bg-pink-soft-02{
+       background-color:#fcf7f2;
+      }
+      .bg-gray-soft{
+       background-color: #c6cbd3;
+      }
+      .bg-black-24{
+       background-color:#242424;
+      }
+      .bg-black-33{
+	background-color:#333;
+      }
+      .h-100px{
+	height: 150px;
+      }
+      .w-100px{
+	width: 150px;
+      }
+      .left-50p{
+	left: 50%;
+      }
+      .pb-128{
+       padding-bottom:38rem;
+      }
+      .pt-128{
+       padding-top:32rem;
+      }
+      .top-50p{
+	top: 50%;
+      }
+      .ml--50px{
+	margin-left: -90px;
+      }
+      .text-gold{
+       color: #bfaa79;
+      }
+
+      .border-gold{
+       border-color:#bfaa79;
+      }
+      .mt--50px{
+	margin-top: -100px;
+      }
+      .writing-tb-rl{
+	writing-mode: tb-rl;
+      }
+      .rotate--180deg{
+       transform: rotate(-180deg);
+      }
+      `;
+      
+      const css ={
+	a4sheet: ' w-210mm h-296mm my-10mm relative overflow-hidden break-after shadow-lg-outer '
+      };
+
+
+     const state = {
+       name: 'Aziz Zaeny',
+       welcome: '"Hi, My Name is Aziz Zaeny, I Was Self Employed Full-Stack Developer, Lets take a look Some of My Personal Information and Experiences... "',
+       photo: 'me.jpeg',
+       phone: "+6281280421987",
+       email1: "zie.azlance@gmail.com",
+       email2: "aziz.zaeny@yahoo.co.id",
+       areaexpertise: [
+	 "(*) Designing and Developing Web Application.",
+	 "(*) UI Engineering, Translating Design Spec from Designer Into Fully Interactive Front-End Experiences.",
+	 "(*) I am Also Good at Constructing Domain Model, Modeling Data Structure For Information Processing, Transforming Business Use cases Into Digital Entities"
+       ],
+       educational:[
+	 { place: "Sekolah Menengah Kejuruan (SMK) Wikrama Bogor",
+	   focus: "-- Software Engineering"},
+	 { place: "Sekolah Tinggi Management Informatika dan Komputer (STMIK) Raharja Tangerang",
+	   focus: "-- System Information Management"}
+       ],
+       lastjobs: [
+	 { place: ' PT. Jiva Samudra Biru',
+	   position: "(*) Backend Engineer",
+	   project: " Madeinindonesia B2B Marketplaces",
+	   descriptions: "I and my team was challanged to build E-commerce Marketplaces that focus on Business to Business transactions, It was very pleasing experiences working on such a big project, I am writting 'case study, experiences and problem solving situation' bellow on the Case of Study sections.",
+	   yearEnd: 'December 2019',
+
+	 }
+       ],
+	     problemsolveskill:`To solve problem at hand, I was confidently using my unique approach and using my own tools of choices.  I am usually not following the river. <br> <br>
+
+     Clojure (Java), Javascript (Clojurescript) , Node.js,  Python Flask, Functional PHP, Datomic Databases (DynamoDB), and any SQL/NoSQL related platform`,
+       //problemsolveskill:'To Solve Problem At Hand, I was confidently using my tools of choices, </br> Clojure (Java), Javascript (Clojurescript), Node.js,  Python Flask, Datomic Databases, and any SQL/NoSQL related platform',
+     //To Solve Problem At Hand, I was confidently using my own tools of choices, Clojure (Java), Javascript (Clojurescript) ,</br>  Node.js , Python Flask, Datomic Databases </br> and any SQL/NonSQL related platform',
+       training: [
+	 { type: "Achievement",
+	   title: '"Test Of English As A Foreign Language (TOEFL)"'
+	 },
+	 { type: "Achievement",
+	   title:'"Test Of English For International Communication (TOEIC)"'
+	 },
+	 { type: "Workshop",
+	   title: '"SAP - ABAP Fundamentals"'
+	 },
+	 { type: "Training" ,
+	   title: '"Unified Modeling Language (UML)"'
+	 },
+	 { type: "Workshop",
+	   title: '"Virtualizaition and Cloud Computing"'
+	 },
+	 { type: "Training",
+	   title: "Document Object Model (DOM) Javascript"
+	 },
+	 { type:'Workshop',
+	   title: "Windows 8 Server"
+	 },
+	 { type:'Training',
+	   title :'Auto Electronic Mailing System (AEMS)'
+	 }
+       ],
+       hightlight: {
+	 name:'Madeinindonesia',
+	 about: ['Build international B2B marketplaces that designed for Indonesian Authentic Seller to sell their goods in our digital ecosystem',
+		 'Madeinindonesia should  empower local UKM in indonesia to maximize the opportunities enable them leverage the power of the internet to connect and engage with other internaltional business across the globe using our latest technology and digital infrastructure ',
+		 '"Problem: Design web application that meet our stakeholder expectation"..'
+		],
+	 case : [
+	   'Design EAV (Entity Attribute Value) Model for Multiple Variants Products Attributes',
+
+	   'Design Pricing System in Wholesale Product for Bulk Ordering System.',
+
+	   'Design Domain Model for Catalog Product with Multiple Sub and Parents category.',
+
+	   'Applying Paypal Payment Method API.',
+	   'Applying Midtrans Payment Integration API.',
+
+
+	   'Realtime Data Fetching Mechanism for getting third party shipment carrier rates.',
+
+	   'Creating Reports Balance of Sales and Statistics.',      
+	   'Implementation of Shopping-cart Front-end UI Experiences.',
+	   'Design E-commerce Domain Model with Datomic and Clojure Spec.',
+	   'Implementation of Fuzzy Searching To Improve Search Accuracy.',
+	   'Displaying UI product Grid from Transit EDN format Search Query.',
+	   'Fetching Data and Lazy Loading E-commerce Product Images.',
+	   'Develop Domain Model for \'Request For Quotation (RFQ) in B2B Inquiry System.',
+
+	   'Improving static data loading with Gzip middleware and basic http headers.',
+	   'Design User Interaction Front-end Data filtering Grouping and Searching.',
+	   'SQL Query Analysis, Analyzing Redundance Reads, Heavy SQL Operation in Shoping Cart with multiple Products.',
+
+	   'Develop feature Stock Control, Notification of Low Stock.',
+	   'Displaying Large Data of Detail Transaction with Effective UI Scrolling and Pagination.',
+	   'Design Schemas for Tracking Order, Shipping and Invoicing.',
+	   'Synchronizing Quantity of Item at Stakeholder and Administrator Dashboard.',
+	   'Applying Taxes and Discount at Any Transaction That Occured.',
+	   'Implementation of Event Sourcing and CQRS with Builtin Datomic Transactions.',
+	   'Providing Third party API Endpoints with JSON and EDN Data Format, Enabling CORS Middleware in clojure or node.js Based Server.',
+	   'Provide Authorizations and Authentication API Based on JWT (JSON Web Token).',
+	 ]
+       },
+       Knowledgeexp:[
+	 'Developing Single Page Application (SPA), Routing Client Side UI Component, Rendering SVG, DOM or VDOM (dot-dom, React, Reagent)',
+	 'Building Progressive WebApps, Design Offline Storage, and Build HTML5/JS API Feature.',
+	 'Building Web Services API with REST (HATEOAS), GraphQL or CQRS Design Pattern (Node.js or Clojure).',
+	 'Programing I/O, Networking TCP/Socket, Creating program with CLI interfaces (Node.js Clojure).',
+
+
+	 'Implementing  Database Migration, Replication and Sharding Strategy',
+	 'Design Load Balancing Strategy with HAProxy and Nginx stream proxy',
+	 'Develop In-Memory State and Session with Redis',
+	 'Deploying Monolithic or Microservices Architecture (with Kafka, Docker, Messages Broker System, Event Driven Design, Durable Immutable Log)',
+	 'Develop Stateless Authorization and Authentications Mechanism with one time transaction token for web services',
+	 'Synchronizing Client and Server Data with Websocket and Server Sent Event (SSE).',
+	 'Manage and Deploying Virtual Private Server Linux or any Unix System.',
+	 'Setting up and Configuring Static server with Nginx.',
+	 'Impelement HTTPS/SSL on clojure Web Server and Node Server.',
+	 'Securing Clojure and Node.js Web Services.',
+
+	 'Develop Auto Scaling Storage system with Amazon S3 Block Storage, Digital Ocean Block Storage',
+	 'Cross-Platform Desktop Application Development with Electron, Node Or NW.js',
+
+	 'Develop Shader - WebGL implementation in javascript with THREE.js and pure js, visualizing 2D shader or 3D Obj model loaded from webgl buffer ',
+	 'Enhancing UI/UX Page Transition, Micro Interaction and Animation.',
+	 'Building Concurrency System with Core.Async Clojure,  Map-Reduce parallelism IO Or Side Effect Program with lazy evaluation.',
+	 'Able To Adapt Collaboratively with any Git Workflow, Functional Programming Pattern OR Object Oriented Paradigm '
+
+
+
+
+       ],
+      contentLast: '"Lastly, I am Putting Some of My Past Experience Working on Open Source Project, Enterprise Application, System Information Management."',
+      
+      contentsInnerLast: 'Sorry ;) for the wall of text. in conclusions "I can make the web application for you, I can make your static design real live interactive, I can help you in the field of battle.. meet me soon, we can conquer the world together..',
+      
+       pastexp:[
+	 'Lhun Algorithm (ATM Card) Clojure Implementations.',
+	 'Clojure Account Banking Credit And Debit Domain Model.',
+	 'Develop Inventory Stock Keeping Unit (SKU) System with Clojure.',
+
+	 'Follow/Unfollow Twitter Domain Model with Datomic.',
+	 'Representing Family Relation as Graph with Clojure.',
+	 'Develop Booking and Reservations Management System.',
+
+	 'Design System Information HRD Recruitment Candidate',
+	 'Domain Model of Project Management, Todo List Tagging.',
+	 'Geo Hashing and reverse geo coding \'Penjaja Roti\'.',
+	 'Visualizing Geospatial Data (Temporal Data and Topical Data) \'aktifitas Penjaja Roti',
+	 'Map and Reduce, Summarizing of polling \'Pemilu\' Regional Election Data.',
+	 'Challange domain modeling of Authorization System at Google Docs Document Permission Managements.',
+	 'Redesigning of My-Telkomsell App (Simulation Of Domain Model Pulsa and Internet Package).',
+	 'Use Case of \'Absensi Mahasiswa\' front-end with Clojurescript and Datascript.',
+	 'Develop Realtime Chating with Websocket and React.js',
+	 'Regex Matching Atomic CSS (ACSS) with clojure Data Structure.',
+	 'Implementation Virtual DOM in Pure Clojure Data Structure.',
+	 'Implement Undo - Redo State in Clojurescript.',
+	 'Spatial Geo Searching and Queries with Datomic (Rtree).',
+	 'SQL DSL with Clojure Maps.',
+	 'Realtime Background Processing, Signaling Live streaming Video with FFMPEG and VLC.',
+	 'Reading Chess PGN/Fen Format with Clojure.',
+	 'Javascript WebGL- Object Collition Detecting.',
+	 'Web Mercator Projection Raster Tile Maps Rendering Maps from Google Maps, and Mapbox',
+	 'Reading and Writing Stream Binary Data in Clojure REPL with bencode Format',
+	 'World Cup 2018, Domain model and Data structure (Event Sourcing Live Match).',
+	 'Case of Studies of Game Logic with Clojurescript Snake Game, Rock Paper Scicors, Tetris, TicTacToe, Sudoku, Flappy Birds)',
+	 'Study - Implementation K-Nearest Neighbors (K-NN) in Clojure and Visualizing it in Plots Data ',
+	 'Predicting Reading Time - Content Length of the Blog and Articles',
+	 'Machine Learning (ML) - Classifying Fish Sightings Type name, length and dimension',
+
+	 'Transforming Data Format for Bulk Products Data Import in XML,CSV,JSON and EDN',
+	 'Generating PDF Invoices with Clojure PDF and LaTex',
+	 'Sentiment Analyisis Customer Comments on Products Reviews ',
+       ]
+
+     };
+
+
+const IntroductionSection = (props) =>{
+  return H('section', {className: css.a4sheet+ ' bg-white'} ,[
     
+    H('div', {className:'m-0 p-0 '},[
+      
+      //upper part
+      H('div', {className:'flex h-148mm bg-white'}, [
+	// split two text
+	H('div', {className:'w-1/2'},
+	  H('div', {className:'pt-64 pl-40 font-pfd text-4xl font-semibold'}, props.name)),
+	H('div', {className:'w-1/2'},
+	  H('div', {className:"mt-40 pt-48 pr-10 text-lg"}, props.welcome)),	
+      ]),
+      
+      // bottom part
+      H('div',{ className: 'h-148mm bg-f5'},
+	H('div', {className: 'flex justify-between pt-48'},
+	  H('div', {className:""}, ''),
+	  H('div', {className:"text-sm"},[
+	    H('span', "Email: "),
+	    H('span', {className: "font-bold"}, props.email1),
+	    H('span', " | "),
+	    H('span', {className:"font-bold"}, props.email2),
+	    H("span", {className:"block"}, [
+	      H('span',"Phone: "), H('span', {className: 'font-bold'}, props.phone)
+	    ]),	    
+	  ]),
+	  H('div', '')
+	  
+	 )),
+      //absolute
+      H('div', {className:'absolute h-100px w-100px left-50p top-50p ml--50px mt--50px pt-6'},
+	H('img',{ className: 'rounded-full shadow-2xl', src: props.photo})),
+      H('div', { className:'absolute top-0 pt-64 pl-4 border-r border-gray-700'},
+	H('div', {className:'writing-tb-rl rotate--180deg'}, 'Curriculum Vitae - 01 ')),      
+      H('div', {className: 'absolute bottom-0 right-0 pb-56 pr-4 border-l border-gray-600' },
+	H('div', {className:'writing-tb-rl rotate--180deg'}, '2020'))
+
+    ]
+     ),
+    
+  ]);
+}
+
+
+const ProblemSolving = (props, state, setState, hooks) =>{
+  hooks.r = 1 
+  return H('span', { className:"pt-1 text-justify text-lg text-gray-600",
+		     innerHTML:  props.problemsolveskill});
+}
+
+
+const AreaExpertise = (props) =>{
+   return H('section', {className: css.a4sheet+ ' bg-white'} ,[
+     H('div', {className:'m-0 p-0 '},
+       
+       H('div', {className:"flex bg-white"},[
+	 H('div', {className: "w-5/12"},
+	   H('div',{className:'flex-col'},[
+	     
+	     H('div', {className:"pl-4"},
+	       H('div', {className: "pt-48 px-12 font-bold font-pfd text-4xl"}, [
+		 H('span',{className:"text-gray-900"} ,"Area "),
+		 H('span',{className:'text-xl'}, 'of '),
+		 H('span', {className:'text-gray-900'}, "Expertise ")]
+	      ),
+	       H('div', {className: 'pt-0 pl-16 flex-col'}, props.areaexpertise.map((i)=>{
+		 return H('div', {className:"text-base pt-4"},  i)
+	       }),
+		 
+		)),
+	     H('div', {className: "pl-4"},
+	       H('div', {className:"pt-32 pl-12"},
+		 H('div', {className:" italic"}, [
+		   H('span', {className: "pt-1 border-t-2 border-gray-700 "}, '" '),
+		   H(ProblemSolving, props),
+		   H('span', {className: "pb-1 border-b-2 border-gray-700"}, ' "')
+		 ])))
+	   ])
+	 ),
+	 H('div', {className: "w-7/12 flex-col pl-8 pr-6"},[
+	   
+	   H('div', {className: "flex-col pt-64"},[
+	     
+	     H('div', {className:"pt-10 tracking-wide uppercase"}, "Educational Background"),
+	     H('div', {className:'px-1'}, props.educational.map((v) =>{
+	       return H('div',{className:"leading-relaxed pt-2 text-sm"}, [
+		 H('span', v.focus), H('span', {className:'block'}, v.place)
+	       ])
+	     })),
+	     
+	     H("div", {className:"pt-10 tracking-wide uppercase "}, "Training and Achievement"),
+	     H('div', {className:"pt-2 px-1 text-sm tracking-normal"}, props.training.map((v) => {
+	       return H('div',{className:" pr-6 pt-1"}, [
+		 H('span', ' ' +v.title),
+		 H('span', {className:"text-gray-700 ml-2"},'-'+v.type)])
+	     })),
+	     
+	     H("div", {className: " pt-10 tracking-wide uppercase"}, "Latest Jobs"),
+	     H('div',{className: "px-1"}, props.lastjobs.map((v) =>{
+	       return H('div', {className:'pt-2 text-sm leading-relaxed'}, [
+		 H('div', {className:'pl-1 font-semibold tracking-wider text-gray-600'}, v.position),
+		 H('div', {className:'pl-1 pt-1 tracking-wide text-gray-800'},  v.place  + '-- end in '+ v.yearEnd),
+		 H('div', {className: 'pl-1 text-gray-800'}, v.project),		 
+		 H('div', {className:'pl-1 pr-2 pt-2 text-justify'}, '"' +v.descriptions+'"')
+	       ])
+	     })),
+	     	     
+	   ]),
+	  
+	   
+	 ]),
+       ]),
+       //absolute
+       H('div', { className:"absolute bottom-0 left-0 pb-128 pl-4 border-r border-gray-400"},
+	 H('div', {className:"writing-tb-rl rotate--180deg"},"Key Skills - 02 "))
+      )
+     ]);
+}
+
+
+const CaseStudyPorto = (props) =>{
+  
+     return H('section', {className: css.a4sheet + ' bg-black-33 text-col-f7f8'} ,[
+       H('div', {className:'m-0 p-0'},[
+	 // ordered
+	 H('div', {className: 'flex-col'}, [
+	   
+	   // col2
+	   H('div',{className: 'flex justify-between pt-16'},[
+	     H('div',{className:'pl-4 text-gold font-bold'},''),
+	     H('div',
+	       H('div',{className: 'font-fdp text-xl'},
+		 H('span',{className: 'font-normal'}, 'Case of Study'),
+		 H('span',{className: 'font-bold text-gold'}, ' // '+props.hightlight.name+' Project'),
+		 H('span',{className:'block text-sm  text-center'}, 'B2B E-commerce Marketplaces')
+		)),
+	     H('div', {className:'pr-4 text-gold font-bold'},'')
+	     
+	   ]),
+
+	   //col1 
+	   H('div',{className:'pt-8 px-20 flex-col'}, [
+	     H('div',{className:' tracking-wider text-lg'}, [
+	       H('span',{className:"font-semibold text-gold"},'Background'),
+	       H('span',{className:'font-bold text-gold'},"")
+	     ]),
+	     H('div',{className: "text-sm text-justify"}, props.hightlight.about.map((v)=>{
+	       return H('p',{className:'pt-2 '},v)
+	     }))
+	   ]),
+	   
+
+	   //col3
+	   H('div', {className:'pt-6 px-20 tracking-wide text-lg'}, [
+	     H('span',{className:"font-bold text-gold"},' '),
+	     H('span',{className:'font-bold text-gold'}, 'Case Study '),
+	     ' ',
+	     H('span',{className:''},'// Experiences')
+	   ]),
+	   
+	   H('div',{ className:'flex pt-2 pl-16 pr-8 w-100 flex-wrap'}, props.hightlight.case.map((v)=>{
+	     return H('div',{className:'text-sm pt-2 leading-relaxed text-gray-300 text-left w-1/2 px-4 '},'* '+v)
+	   }))
+	   
+	 ]),
+	 //absolute
+	 H('div', {className: 'absolute bottom-0 right-0 pb-128 pr-4 border-l border-gold'},
+	   H('div', {className: 'writing-tb-rl rotate--180deg'}, 'Case of Study- 04'))
+	 
+       ]),
+     ]);
+}
+
+
+
+const ExperienceKnowledge = (props) =>{
+       return H('section', {className: css.a4sheet + ' bg-f5'} ,[
+       H('div', {className:'m-0 p-0'},[
+	 // ordered horizontal
+	 H('div', {className: 'flex-col'},[
+	   H('div',{className: 'flex'},[
+	     
+	     H('div',{className: 'w-1/2 '},[
+	       H('div',{className:'pl-32 pt-56 text-gray-600 font-bold text-lg'}, 'Web Application Development'),
+	       H('div',{className: 'pl-32 text-gray-700  text-base'}, '--- Tactics and Strategy'),
+	       H('div',{className: 'pl-32 text-gray-700  text-base'}, '--- Techniques and Skills'),
+	       
+	     ]),
+	     
+	     H('div',{className: 'w-1/2'},
+	       H('div', {className: 'pl-4 pt-32 font-pfd font-bold text-4xl'},[
+		 'Knowledge',
+		 H('span',{className: "text-lg"}, ' and '),
+		 'experiences'
+	       ]))
+	     
+	   ]),
+	   
+	   H("div",{ className: "pt-2 text-base flex-col"},
+
+	     H('div', {className: "pl-48 flex flex-wrap px-16 text-justify"}, props.Knowledgeexp.map((v, i)=> {
+	       return H('div', {className:  'pt-1 w-full px-2 '},
+			H('div', {className: 'text-sm leading-relaxed'}, '* '+v))
+		       }))
+	      ),
+	   // absolute
+	   
+	   H('div', {className: 'absolute top-0 left-0 pt-64 pl-4 border-r border-gray-400'},
+	     H('div', {className: 'writing-tb-rl rotate--180deg'}, 'Key Skills - 03 ')),
+	   
+
+	   H('div', {className: 'absolute bottom-0 right-0 pb-128 pr-4 border-l border-gray-400'},
+	     H('div', {className: 'writing-tb-rl rotate--180deg'}, 'Knowledge and Experiences - 03 ')),
+	 ]),
+	 
+       ])
+
+       ]);
+}
+
+
+
+
+const ChallangeOpensource = (props) =>{
+  return H('section', {className: css.a4sheet + ' bg-black-33 text-col-f7f8'} ,
+    
+    H('div', {className:'m-0 p-0'},
+	 // ordered
+      H('div', {className: 'flex-col  py-12'}, [
+	H('div',{}, H('h3',{className:'pl-16 text-gray-400 max-w-lg leading-normal italic font-normal mt-4 pt-1 text-right text-lg'}, props.contentLast)),
+	H('div',{className:'pl-16 pt-6 text-gray-400 text-sm italic font-normal max-w-lg'}, props.contentsInnerLast),
+	H('div',{className: 'pl-12 pt-10 font-bold text-gold tracking-wider'}, 'Past Experiences '),
+	H('div',{className:'pl-12 pr-8 pt-2 text-gray-400 text-sm flex flex-wrap'},
+	  props.pastexp.map(v => {
+	    return H('div',{className: 'w-1/3 pr-4 pl-4 pb-1 '}, H('div', v))
+	  }))
+      ]),
+      
+      //absolute
+      H('div', {className: 'absolute top-0 right-0 pt-32 pr-4 border-l border-gold'},
+	H('div', {className: 'writing-tb-rl rotate--180deg'}, 'Past Experiences - 05 ')),
+      
+      H('div', {className: 'absolute bottom-0 left-0 pb-16 pl-4 border-r border-gold'},
+	H('div', {className: 'writing-tb-rl rotate--180deg'}, 'Open Source Project - etc')),
+
+      H('div', {className:'absolute bottom-0 right-0 pr-4 pb-4'},
+	H('div',{className: 'writing-tb-r text-xs text-gray-500'}, 'Full Name: Aziz Zaeny, Gender: M, Place Date of Birth: Tangerang, 11 November 1991'))
+    )
+  );
+	   
+}
+
+
+const MainPage = (props, state, setState) =>{
+  return H('div', {className: "p-0 m-0"},
+	   H('main', {},[
+	     H(IntroductionSection, props),
+	     H(AreaExpertise, props),
+	     H(ExperienceKnowledge, props),
+	     H(CaseStudyPorto, props),	     
+	     H(ChallangeOpensource, props)
+	   ]));
+}
+
+
+const renderAdditionalCSS = (content) =>{
+  let head = document.head || document.getElementsByTagName('head')[0];
+  let style = document.createElement('style');
+
+  style.type = 'text/css';
+  
+  if(style.styleSheet){
+    style.styleSheet.cssText = content; 
+  }else{
+    style.appendChild(document.createTextNode(content));
+  }
+
+  return head.appendChild(style);
+}
+
+
+const renderDom = (component, state) =>{
+  if (component === undefined || component === null) {
+     R(H(state.component, state), state.mountPoint);
+  }else{
+     R(H(component, state), state.mountPoint);
+  }
+}
+
+const main = () =>{
+  let Component = MainPage;
+  let mountPoint = document.getElementById('mount-point');
+  let newState = Object.assign(state, {
+    component: MainPage,
+    mountPoint: mountPoint,
+    tags: [],
+    roles: [],
+    routes: '/',
+    cssContent: cssContent,
+  });
+  renderAdditionalCSS(cssContent);
+  renderDom(Component, newState);
+}
+
+
+
+document.body.onload = main;
+
+
+
+
+
       console.log("Whatsup... triky dude...");
       
     </script>
